@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clbouche <clbouche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/06 16:58:52 by clbouche          #+#    #+#             */
-/*   Updated: 2021/07/08 10:06:07 by clbouche         ###   ########.fr       */
+/*   Created: 2021/07/07 11:45:38 by clbouche          #+#    #+#             */
+/*   Updated: 2021/07/08 10:09:35 by clbouche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	send_char_to_server(char c, pid_t pid)
 	i = 0;
 	while (i < 8)
 	{
-		usleep(10);
+		usleep(100);
 		if (c & 1)
 			kill(pid, SIGUSR1);
 		else
@@ -58,13 +58,14 @@ int	main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		}
 		else
+		{
+			ft_putstr("Message received by the server.");
 			send_str_to_server(argv[2], pid);
+		}
 	}
 	else
 	{
 		ft_putstr("Error : problem in the parameters\n");
-		ft_putstr("Usage : the parameters must be = ");
-		ft_putstr("[executable + PID of the server + one string]");
 		exit(EXIT_FAILURE);
 	}
 	return (0);

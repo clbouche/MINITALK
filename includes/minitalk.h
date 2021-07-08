@@ -1,5 +1,5 @@
 #ifndef MINITALK_H
-#define MINITALK_H
+# define MINITALK_H
 
 # include <unistd.h>
 # include <sys/types.h>
@@ -12,8 +12,6 @@ void	ft_putstr(const char *s);
 int		ft_strlen(const char *str);
 void	ft_putnbr(int n);
 int		ft_atoi(const char *str);
-void	send_str_to_server(char c, int pid);
-
-
+void	send_str_to_server(char *str, pid_t pid);
 
 #endif
